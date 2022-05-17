@@ -874,8 +874,8 @@ int main()
 	double fov = 60 * M_PI / 180;
 	Vector Q(0, 0, 55);
 	std::vector<unsigned char> image(W * H * 3, 0);
-	double I = 3E10;
-	int pathsNb = 128;
+	double I = 1E10;
+	int pathsNb = 32;
 	Vector light(-10, 20, 40);
 	Scene scene(I, light);
 
@@ -910,7 +910,6 @@ int main()
 #pragma omp parallel for schedule(dynamic, 1)
 	for (int i = 0; i < H; ++i)
 	{
-		std::cout <<"pixel "<< i << "\n";
 		for (int j = 0; j < W; ++j)
 		{
 			Vector color(0, 0, 0);
