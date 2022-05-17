@@ -820,7 +820,6 @@ public:
 		double splitVal = diag[axis] * 0.5 + bvh->bbox->m[axis];
 		int pivot_index = i0;
 
-		std::cout << pivot_index << std::endl;
 
 		for (int i = i0; i < i1; ++i)
 		{
@@ -836,9 +835,6 @@ public:
 		{
 			return;
 		}
-
-		std::cout << pivot_index << std::endl;
-		std::cout << i1 << std::endl;
 
 		bvh->left = new BVH;
 		bvh->right = new BVH;
@@ -879,7 +875,7 @@ int main()
 	Vector Q(0, 0, 55);
 	std::vector<unsigned char> image(W * H * 3, 0);
 	double I = 3E10;
-	int pathsNb = 32;
+	int pathsNb = 128;
 	Vector light(-10, 20, 40);
 	Scene scene(I, light);
 
@@ -914,6 +910,7 @@ int main()
 #pragma omp parallel for schedule(dynamic, 1)
 	for (int i = 0; i < H; ++i)
 	{
+		std::cout <<"pixel "<< i << "\n";
 		for (int j = 0; j < W; ++j)
 		{
 			Vector color(0, 0, 0);
